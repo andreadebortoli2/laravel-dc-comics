@@ -20,7 +20,9 @@
     @include('partials.header')
 
     <main>
-        @yield('content')
+        <div class="container py-3">
+            @yield('content')
+        </div>
     </main>
 
 </body>
