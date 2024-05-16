@@ -6,7 +6,7 @@
 
     <div class="d-flex justify-content-between align-items-center pb-4">
         <h1>COMICS LIST</h1>
-        <a class="btn btn-primary" href="{{ route('comics.create') }}">ADD COMIC</a>
+        <a class="btn btn-primary" href="{{ route('comics.create') }}">ADD NEW COMIC</a>
 
     </div>
     <div class="table-responsive">
@@ -34,11 +34,48 @@
                         <td>{{ $comic['sale_date'] }}</td>
                         <td>{{ $comic['type'] }}</td>
                         <td>
-                            <a href="{{ route('comics.show', $comic) }}">SHOW</a>
-                            /
-                            <a href="{{ route('comics.edit', $comic) }}">EDIT</a>
-                            /
-                            <a href="">DELETE</a>
+                            <div class="d-flex">
+                                <a class="mx-2 btn btn-primary" href="{{ route('comics.show', $comic) }}">SHOW</a>
+                                <a class="mx-2 btn btn-primary" href="{{ route('comics.edit', $comic) }}">EDIT</a>
+                                <!-- Modal trigger button -->
+                                <button type="button" class="mx-2 btn btn-danger" data-bs-toggle="modal"
+                                    data-bs-target="#modalId-{{ $comic->id }}">
+                                    DELETE
+                                </button>
+
+                                <!-- Modal Body -->
+                                <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+                                <div class="modal fade" id="modalId-{{ $comic->id }}" tabindex="-1"
+                                    data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
+                                    aria-labelledby="modalTitleId" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm"
+                                        role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="modalTitleId">
+                                                    Attention! You are deleting {{ $comic->title }}
+                                                </h5>
+                                            </div>
+                                            <div class="modal-body">you're going to delete the {{ $comic->title }} from the
+                                                databse and it will not be
+                                                possible to recover it</div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                    Cancel
+                                                </button>
+                                                <form action="{{ route('comics.destroy', $comic) }}" method="post">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger">
+                                                        DELETE
+                                                    </button>
+
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                 @empty
@@ -54,3 +91,14 @@
     </div>
 
 @endsection
+
+
+
+
+<!-- Optional: Place to the bottom of scripts -->
+{{-- <script>
+    const myModal = new bootstrap.Modal(
+        document.getElementById("modalId"),
+        options,
+    );
+</script> --}}

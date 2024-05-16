@@ -92,6 +92,12 @@ class ComicController extends Controller
      */
     public function destroy(Comic $comic)
     {
-        //
+        // delete
+
+        $comic->delete();
+
+        // POST-redirect-GET
+
+        return to_route('comics.index');
     }
 }

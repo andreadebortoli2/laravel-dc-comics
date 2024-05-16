@@ -47,7 +47,7 @@
         <div class="mb-2">
             <label for="description" class="form-label"></label>
             <textarea class="form-control" name="description" id="description" rows="6"
-                placeholder="Write the description of the comic">{{ $comic->description }}</textarea>
+                placeholder="Write the description of the comic"></textarea>
         </div>
 
         <div class="d-flex justify-content-end">
