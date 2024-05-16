@@ -80,6 +80,7 @@
             </div>
 
             <div class="d-flex justify-content-end">
+                <a class="btn btn-secondary me-3" href="{{ route('comics.index') }}">CANCEL</a>
                 <button type="submit" class="btn btn-primary">
                     EDIT COMIC
                 </button>

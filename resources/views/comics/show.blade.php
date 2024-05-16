@@ -7,6 +7,11 @@
     <div class="row">
         <div class="col-3"><img src="{{ $comic['thumb'] }}" alt=""></div>
         <div class="col">
+            <div class="d-flex justify-content-end">
+                <a class="btn btn-primary" href="{{ route('comics.index') }}">
+                    BACK
+                </a>
+            </div>
             <h1>{{ $comic['title'] }}</h1>
             <p>{{ $comic['description'] }}</p>
             <hr>
