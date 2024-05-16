@@ -36,7 +36,7 @@
                         <td>
                             <a href="{{ route('comics.show', $comic) }}">SHOW</a>
                             /
-                            <a href="">EDIT</a>
+                            <a href="{{ route('comics.edit', $comic) }}">EDIT</a>
                             /
                             <a href="">DELETE</a>
                         </td>
