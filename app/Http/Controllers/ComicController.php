@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreComicRequest;
+use App\Http\Requests\UpdateComicRequest;
 use App\Models\Comic;
 use Illuminate\Http\Request;
 
@@ -26,11 +28,11 @@ class ComicController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreComicRequest $request)
     {
         // data validation
 
-        $request->validate([
+        /* $request->validate([
             'title' => 'required|max:100',
             'description' => 'nullable',
             'thumb' => 'nullable|max:255',
@@ -38,11 +40,14 @@ class ComicController extends Controller
             'series' => 'nullable|max:50',
             'sale_date' => 'nullable|date',
             'type' => 'nullable|max:20',
-        ]);
+        ]); */
+
+        $validated_data = $request->validated();
 
         // create
 
-        $data = $request->all();
+        // $data = $request->all();
+        $data = $validated_data;
 
         // save one data per time
         /* $newComic = new Comic();
@@ -82,11 +87,11 @@ class ComicController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Comic $comic)
+    public function update(UpdateComicRequest $request, Comic $comic)
     {
         // data validation
 
-        $request->validate([
+        /* $request->validate([
             'title' => 'required|max:100',
             'description' => 'nullable',
             'thumb' => 'nullable|max:255',
@@ -94,11 +99,14 @@ class ComicController extends Controller
             'series' => 'nullable|max:50',
             'sale_date' => 'nullable|date',
             'type' => 'nullable|max:20',
-        ]);
+        ]); */
+
+        $validated_data = $request->validated();
 
         // update
 
-        $data = $request->all();
+        // $data = $request->all();
+        $data = $validated_data;
 
         $comic->update($data);
 
