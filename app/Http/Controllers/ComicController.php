@@ -104,7 +104,7 @@ class ComicController extends Controller
 
         // POST-redirect-GET
 
-        return to_route('comics.index');
+        return to_route('comics.show', $comic);
     }
 
     /**
@@ -118,6 +118,6 @@ class ComicController extends Controller
 
         // POST-redirect-GET
 
-        return to_route('comics.index');
+        return back();
     }
 }

@@ -8,7 +8,8 @@
         <div class="col-3"><img src="{{ $comic['thumb'] }}" alt=""></div>
         <div class="col">
             <div class="d-flex justify-content-end">
-                <a class="btn btn-primary" href="{{ route('comics.index') }}">
+                <a class="mx-2 btn btn-primary" href="{{ route('comics.edit', $comic) }}">EDIT</a>
+                <a class="btn btn-secondary" href="{{ url()->previous() }}">
                     BACK
                 </a>
             </div>
